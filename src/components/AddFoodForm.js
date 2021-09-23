@@ -1,11 +1,11 @@
 import React from "react";
-import { Button, Divider, Input } from "antd";
+import { Divider, Input } from "antd";
 import { useState } from "react";
-import { v4 as uuid } from 'uuid';
+// import { v4 as uuid } from 'uuid';
 
 export default function AddFoodForm(props) {
-  const [foodName, setFoodName] = useState("");
-  const [foodImg, setFoodImg] = useState("");
+  const [name, setFoodName] = useState("");
+  const [image, setFoodImg] = useState("");
   const [calories, setCalories] = useState(0);
   const [servings, setServings] = useState(0);
 
@@ -16,8 +16,9 @@ export default function AddFoodForm(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const newFoodItem = { foodName, foodImg, calories, servings,  _id: uuid() };
-    props.addFood(newFoodItem);
+    const newFoodItem = { name, image, calories, servings };
+    console.log(newFoodItem);
+    props.addNewFoodItem(newFoodItem);
     setFoodName("");
     setFoodImg("");
     setCalories(0);
@@ -26,25 +27,25 @@ export default function AddFoodForm(props) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
         <Divider>Add Food Entry</Divider>
-        <label htmlFor="foodName">Name</label>
+        <label>Name</label>
         <Input
-          value={foodName}
+          value={name}
           type="text"
           name="foodName"
           id="foodName"
           onChange={handleFoodNameChange}
         />
-        <label htmlFor="foodImg">Image</label>
+        <label>Image</label>
         <Input
-          value={foodImg}
+          value={image}
           type="text"
           name="foodImg"
           id="foodImg"
           onChange={handleFoodImgChange}
         />
-        <label htmlFor="calories">Calories</label>
+        <label>Calories</label>
         <Input
           value={calories}
           type="number"
@@ -52,7 +53,7 @@ export default function AddFoodForm(props) {
           id="calories"
           onChange={handleCaloriesChange}
         />
-        <label htmlFor="foodName">Servings</label>
+        <label>Servings</label>
         <Input
           value={servings}
           type="number"
@@ -60,8 +61,8 @@ export default function AddFoodForm(props) {
           id="servings"
           onChange={handleServingsChange}
         />
-        <Button type="submit">Create</Button>
-      </form>
+        <button type="submit">Create</button>
+        </form>
     </div>
   );
 }

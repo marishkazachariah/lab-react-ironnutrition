@@ -9,7 +9,7 @@ function App() {
   const [foodList, setFood] = useState(foods);
 
   const addNewFoodItem = newFoodItem =>{
-   
+    // console.log(newFoodItem);
     const updatedFood = [...foodList, newFoodItem];
     setFood(updatedFood);
   }
@@ -24,7 +24,7 @@ function App() {
   return (
     <div className="App">
       <Divider>Food List</Divider>
-      <AddFoodForm addFood={addNewFoodItem} />
+      <AddFoodForm addNewFoodItem={addNewFoodItem} />
       <Row style={{ width: "100%", justifyContent: "center" }}>
         {foodList.map((food) => {
           return <FoodBox food={[food, removeFoodItem]} />;
