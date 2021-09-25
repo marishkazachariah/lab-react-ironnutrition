@@ -1,7 +1,6 @@
 import React from "react";
 import { Divider, Input } from "antd";
 import { useState } from "react";
-// import { v4 as uuid } from 'uuid';
 
 export default function AddFoodForm(props) {
   const [name, setFoodName] = useState("");
@@ -33,16 +32,16 @@ export default function AddFoodForm(props) {
         <Input
           value={name}
           type="text"
-          name="foodName"
-          id="foodName"
+          name="name"
+          id="name"
           onChange={handleFoodNameChange}
         />
         <label>Image</label>
         <Input
           value={image}
           type="text"
-          name="foodImg"
-          id="foodImg"
+          name="image"
+          id="image"
           onChange={handleFoodImgChange}
         />
         <label>Calories</label>
